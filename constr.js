@@ -6,7 +6,7 @@ function Node(data, next, prev) {
     this.prev = prev;
 
     //Objects can also have functions
-    function alertUsr(){
+    this.alertUsr = function(){
         alert("You have been alerted!")
     }
 }
