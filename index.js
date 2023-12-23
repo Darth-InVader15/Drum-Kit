@@ -5,6 +5,7 @@ for (var i = 0; i < n; i++) {
     currSet[i].addEventListener("click", function() {
         let button = this.innerHTML;
         soundAPTx(button);
+        buttonAnimation(button);
     }); 
 }
 
@@ -12,6 +13,7 @@ for (var i = 0; i < n; i++) {
 document.addEventListener("keydown", function(event) {
     console.log(event.key);
     soundAPTx(event.key);
+    buttonAnimation(event.key);
 });
 
 let soundAPTx = function(key) {
@@ -51,3 +53,13 @@ let soundAPTx = function(key) {
         tone1.play();
     }
 };
+
+let buttonAnimation = function (key){
+    let activeKey = document.querySelector("." + key);
+
+    activeKey.classList.add("pressed");
+
+    setTimeout(function(){
+        activeKey.classList.remove("pressed");
+    },100);
+}
