@@ -6,6 +6,10 @@ for (var i = 0; i < n; i++) {
         return function() {
             // currSet[i].style.color = 'white'; // changes color of the button to white upon being clicked
             let tone1 = new Audio('/sounds/crash.mp3');
+
+            // alt we could have done let key = this.innerHtml;
+            // switch(button)
+
             switch (i) {
                 case 0:
                     tone1 = new Audio('/sounds/crash.mp3');
@@ -37,7 +41,23 @@ for (var i = 0; i < n; i++) {
             }
             tone1.play();
         };
-    }(i));
+    }(i)); 
+    //(i) is due to the asynch behaviour of JS. if we dont do it, no matter the value of i, 
+    // the inner fn would always receive the last val
+    //which kinda defeats the entire purpose
+
+    //keyboard listener
+    //the event inside the fn is for passing the event that triggered the listener
+    document.addEventListener("keydown", function(event){
+        console.log(event.key + " key was pressed")
+
+    })
+
+
+
+
+
+
 
     //alternatively we could just use 'this' word inside the for loop
     //the this operator would return the current tag which is being pressed, thus this.innerhtml would give us name of the button being pressed
